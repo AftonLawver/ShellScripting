@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "The current working directory is"
+pwd
+echo "Reading the contents of the files"
+cat test*.txt
+echo "Deleting the files"
+rm test*.txt
+echo "Files have been removed"
+echo "End of program"
+
