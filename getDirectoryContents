@@ -1,0 +1,9 @@
+#!/bin/bash
+clear
+echo -n "What is the path to the directory you would like to view?: "
+read DIRECTORYPATH
+
+cd $DIRECTORYPATH
+
+ls -itla
+

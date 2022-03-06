@@ -1,0 +1,14 @@
+#!/bin/bash
+clear
+echo -n "What is the filepath of the file you would like to delete?: "
+read FILEPATH
+
+echo "Filepath is: "
+echo $FILEPATH
+
+echo "File contents "
+cat $FILEPATH
+
+echo "Removing file "
+rm $FILEPATH
+

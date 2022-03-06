@@ -1,0 +1,15 @@
+#!/bin/bash
+clear
+echo "Welcome to the FIND script"
+echo -n "Enter the location (such as /home) where the search should start "
+read STARTLOCATION
+echo -n "What is the name of the file to search for? "
+read FILENAME
+echo "Search starting for the $FILENAME file in the $STARTLOCATION directory"
+
+# instead of printing all error messages to the screen
+# 2>/dev/null is used to redirect all error messages
+# to the /dev/null directory.
+# All data that is written to this directory is deleted. 
+find $STARTLOCATION -name $FILENAME 2>/dev/null
+
