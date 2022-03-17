@@ -1,0 +1,9 @@
+#!/bin/bash
+clear
+
+echo "Getting directory contents of $1"
+
+cd $1
+
+ls -itla
+

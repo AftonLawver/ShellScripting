@@ -1,0 +1,13 @@
+#!/bin/bash
+clear
+
+((TOTAL = $1 + $2 + $3))
+echo "Sum of $1, $2, and $3: $TOTAL"
+
+((SQUARE1 = $1 *$1))
+((SQUARE2 = $2 *$2))
+((SQUARE3 = $3 *$3))
+
+echo "$1 squared = $SQUARE1"
+echo "$2 squared = $SQUARE2"
+echo "$3 squared = $SQUARE3"
