@@ -1,0 +1,46 @@
+#!/bin/bash
+clear
+
+if [ "$1" -ge 0 ] 2>/dev/null && [ "$2" -ge 0 ] 2>/dev/null && [ "$#" -ge 0 ]
+then 
+	if [ "$3" == "+" ]
+	then ((TOTAL = $1 + $2))
+		echo "$1 + $2 = $TOTAL"
+	exit 1
+
+	elif [ "$3" == "x" ]
+	then 
+	((TOTAL = $1 * $2))
+	echo "$1 * $2 = $TOTAL"
+	exit 1
+
+	elif [ "$3" == "^" ]
+	then
+		if [ "$2" == 0 ]
+		then echo "$1 ^ $2 = 1"
+		exit 1
+
+		elif ([ "$1" == 0 ]) || ([ "$1" == 0 ] && [ "$2" == 0 ])
+		then echo "$1 ^ $2 = 0"
+		exit 1
+
+		else
+			((TOTAL = 1))
+			for i in $(seq 1 $2)
+			do	
+				((TOTAL = $TOTAL * $1))
+			done
+			echo "$1 ^ $2 = $TOTAL"
+			exit 1
+		fi
+
+	else
+		echo "This is an invalid operator"
+		exit 0
+			
+	fi
+else
+	echo "Invalid input."
+	exit 1
+fi
+

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if [ "$#" == 1 ]
+then
+	if [ $1 -le 1 ] 
+		then echo "Number is not prime."
+		exit 1
+	elif [ "$1" == 2 ] || [ "$1" == 3 ] || [ "$1" == 5 ] || [ "$1" == 7 ]
+		then echo "Number is prime."
+		exit 1
+	elif [ $(( $1 % 2 )) -eq 0 ]
+		then echo "Number is not prime."
+		exit 1
+	else
+	square_root=$(echo "scale=0; sqrt ($1)" | bc -l)	
+		for (( i=3; i<=$square_root; i+2 ))
+		do
+			if [ $(( $1 % $i )) -eq 0 ]
+			then echo "Number is not prime."
+			exit 1
+			else echo "Number is prime."
+			exit 1
+			fi
+		done
+	fi
+		
+else 
+	echo "Invalid number of arguments."
+fi
+exit 0
+

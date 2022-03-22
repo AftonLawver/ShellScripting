@@ -1,0 +1,32 @@
+#!/bin/bash
+
+successes=0
+
+for var in "$@"
+do	
+	echo
+	echo "$var"
+	if [[ -f "$var" ]]
+	then echo "This is a valid file"
+	echo "Here is the files long listing: "
+	ls -il "$var"
+	((successes=$successes + 1))
+
+	elif [[ -d "$var" ]]
+	then echo "This is a valid directory"
+	echo "Here is the directories long listing: "
+	ls -ild "$var"
+	((successes=$successes + 1))
+
+	else
+	echo "This is not a valid file."
+	fi
+done 
+
+if [ $successes == "$#" ]
+then exit 0
+else 
+	exit 1
+fi
+
+		

@@ -1,0 +1,9 @@
+#!/bin/bash
+while cat testfile > /dev/null
+do 
+echo exit status code is $?
+sleep 1
+done
+echo You deleted the file!
+
+

@@ -1,0 +1,22 @@
+#/bin/bash
+clear
+
+if [ "$#" -le 0 ] || [ "$#" -ge 6 ] 
+
+then 
+	echo "Invalid number of arguments"
+	exit
+fi
+	
+for var in "$@"
+do
+
+if [ -d "$var" ] 
+
+then
+	ls -l "$var"	
+	
+else echo "$var" not a directory
+fi
+
+done
