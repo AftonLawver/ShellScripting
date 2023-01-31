@@ -1,35 +1,43 @@
 #!/bin/bash
 
-echo "Please enter in a file"
-
-read filename
-
-#to use a variable use the $ symbol
-
-#-a tells us if a file exists at all
-# -d tells us if a file is a directory
-# -f tells us whether the input is a regular file 
-# can use semicolon to run a sequence of commands, one after the other.
-
-if [[ -a $filename ]]
+if [[ $# -ne 1 ]]
 then
-	if [[ -f $filename ]]
-	then 
-		echo "Output: "
-		ls -l $filename; cat $filename
-	elif [[ -d $filename  ]]
-	then 
-		ls -l -d $filename
-		echo "Number of files: "
-		ls -il | grep ":" | wc -l
-	else 
-		echo "That file is real, but is not regular or a directory"
-	fi
-else 
-	echo "That file does not exist"
+	echo "Please enter exactly one argument that is a filename"
 	exit 1
-
 fi
 
+filename=$1
 
+#File does exist
+if [[ -a $filename ]]
+then
+	echo "Metadata:  "
 
+	#File exists and is regular
+	if [[ -f $filename ]]
+	then
+		ls -l $filename
+		echo ""
+
+		echo "Contents:  "
+		cat $filename
+		echo ""
+	#File exists and is a directory
+	elif [[ -d $filename ]]
+	then
+		ls -l -d $filename
+		echo ""
+		echo "Number of files:  "
+		echo $(( $( ls -l $filename | wc -l ) - 1 ))
+		echo ""
+	#File exists but is not regular or a directory
+	else
+		echo "That file is real, but is not regular or a directory"
+	fi
+#File does not exist
+else
+	echo "That file does not exist"
+	exit 1
+fi
+
+#Script is done
