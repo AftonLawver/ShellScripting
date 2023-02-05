@@ -1,0 +1,24 @@
+#!/bin/bash
+
+clear
+
+filename=$1
+
+if [[ $# -ne 1 ]]
+then 
+	echo "Please enter a filename as a command line argument and try again."
+else 
+	if [[ -d $filename ]] 
+	then 
+		echo "is a directory!"
+		echo ""
+	       	echo "Number of files:"
+		ls -l $filename | grep src | wc -l
+	else 
+		echo "Error: file is not a directory"
+		exit 1
+	fi
+
+fi
+
+
